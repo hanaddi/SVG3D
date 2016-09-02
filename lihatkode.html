@@ -1,0 +1,84 @@
+<script type='text/javascript'>
+var warna=[];
+var benda1=[];
+var benda=[];
+var s=1;
+</script>
+
+<script type='text/javascript' id='ko' src='bunga-min.js'></script>
+
+<script>
+function kod(){
+	benda1=JSON.parse(JSON.stringify(benda));
+	tulis(benda1);
+}
+
+//////ROTASI//////////////
+function rotZ(ar3,a,p,q){
+	a=a % (2*Math.PI);
+	for(var i=0;i<ar3.length;i++){
+		for(var j=0;j<ar3[i].length;j++){//>
+			r=Math.sqrt(ar3[i][j][p]*ar3[i][j][p]+ar3[i][j][q]*ar3[i][j][q]);
+			a1=ar3[i][j][p];
+			a2=ar3[i][j][q];
+			ar3[i][j][p]=a1*Math.cos(a)-a2*Math.sin(a);
+			ar3[i][j][q]=a1*Math.sin(a)+a2*Math.cos(a);
+		}
+	}
+	return ar3;
+}
+//DILATASI///
+function dilZ(ar,a,b,c){
+	var ar3=ar;
+	for(var i=0;i<ar3.length;i++){
+		for(var j=0;j<ar3[i].length;j++){
+			ar3[i][j][0]*=a;
+			ar3[i][j][1]*=b;
+			ar3[i][j][2]*=c;
+		}
+	}
+	return ar3;
+}
+//TRANSLASI/////////////////
+function traZ(ar,a,b,c){
+	var ar3=ar;
+	for(var i=0;i<ar3.length;i++){
+		for(var j=0;j<ar3[i].length;j++){
+			ar3[i][j][0]+=a;
+			ar3[i][j][1]+=b;
+			ar3[i][j][2]+=c;
+		}
+	}
+	return ar3;
+}
+//*
+function tulis(ar3){
+	document.write("s = "+s+";<br>");
+	for(var i=0;i<ar3.length;i++){
+		for(var j=0;j<ar3[i].length;j++){
+			for(var k=0;k<ar3[i][j].length;k++){
+			 ar3[i][j][k]=Math.round(ar3[i][j][k]*100/s)/100;
+			}
+		}
+	}
+	
+	for(var i=0;i<ar3.length;i++){
+		document.write("benda["+i+"] = [");
+		for(var j=0;j<ar3[i].length;j++){
+			document.write("[s*"+ar3[i][j][0]+",s*"+ar3[i][j][1]+",s*"+ar3[i][j][2]+"]");
+			if(j<benda1[i].length-1){document.write(",");}
+		}
+		document.write("];<br>");
+	}
+	aa='';
+	for(var i=0;i<warna.length;i++){
+		aa+="'"+warna[i]+"'";
+		if(i<warna.length-1){aa+=",";}
+	}
+	aa.slice(0,8);
+	document.write("warna = ["+aa+"];<br>");
+}//*/
+
+window.onload=kod;
+//document.write(Math.round(2.45444444444*10)/10);
+</script>

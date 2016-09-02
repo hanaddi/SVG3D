@@ -1,0 +1,36 @@
+<script src='load.js'></script>
+<script>
+
+var include=document.createElement("script");
+include.src='robot.js';
+include.onreadystatechange=function(){
+	if(this.readyState=='complete')robota();
+//	alert(this.readystate);
+}
+//include.onload=robota;
+include.src='robot.js';
+	alert(include.readyState);
+document.head.insertBefore(include,document.head.childNodes[0]);
+
+//if(robota()){
+//	onlo();
+//}
+//window.on=function(){
+function aa(){
+	robota();
+	onlo();
+}
+</script>
+<body onload=''>
+<div id='svg' style='position:fixed;cursor:default;background-color:#aaaaaa;top:0px;left:0px;'></div>
+<div style='position:fixed;width:100%;height:100%;left:0px;top:0px;cursor:default;' onselectstart='return false'>
+<div style='width:100%;height:100%;background-color:#ffffaa;opacity:0.15;left:0px;top:0px'></div>
+<div style='position:fixed;top:0px;left:0px;width:100%;text-align:center;font-family:cursive;'>
+<h1>Website 3 Dimensi</h1><hr/>
+Efek 3 dimensi pada halaman ini merupakan eksplorasi dari file scalable vector graphic (svg)<br/>
+Efek 3 dimensi dibuat dengan javascript. Bentuk objek bisa diimport dari blender 3D.<br/>
+<br/>
+<a href='mailto:fat.han.nuraddin@gmail.com'>&copy; Fat Han Nuraddin</a>
+</div>
+</div>
+</body>

@@ -1,0 +1,50 @@
+titik :<br/><textarea id="node" cols="100%"></textarea>
+<br/>sisi :<br/>
+<textarea id="face" cols="100%"></textarea><br/><button onclick="proses()">proses</button>
+<br/>
+hasil :<br/><textarea cols="100%" id="hasil"></textarea>
+<script>
+function proses(){
+	var node=document.getElementById('node').value;
+	var face=document.getElementById('face').value;
+	var hasil=document.getElementById('hasil');
+	var titik='var nod=';
+	for(var i=0;i<node.length;i++){
+		if(node[i]=="("){
+			titik+='[';
+		}else if(node[i]==")"){
+			titik+=']';
+		}else{
+			titik+=node[i];
+		}
+	}
+	titik+=';\n';
+	
+	var sisi='';
+	for(var i=0;i<face.length;i++){
+		if(face[i]=="("){
+			sisi+='[';
+		}else if(face[i]==")"){
+			sisi+=']';
+		}else if(face[i]!=' '){
+			sisi+=face[i];
+		}
+	}
+	var sisi2='var sisi=';
+	for(var i=0;i<sisi.length;i++){
+		if(sisi[i]=="[" && sisi[i+1]!="["){
+			sisi2+='[nod[';
+		}else if(sisi[i]=="," && sisi[i-1]!="]"){
+			sisi2+='],nod[';
+		}else if(sisi[i]=="," && sisi[i-1]=="]"){
+			sisi2+='],';
+		}else if(sisi[i]=="]" && sisi[i+1]=="]"){
+			sisi2+=']]';
+		}else{
+			sisi2+=sisi[i];
+		}
+	}
+	sisi2+=';\n';
+	hasil.innerHTML=titik+sisi2;
+}
+</script>
